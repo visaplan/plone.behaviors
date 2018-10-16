@@ -13,7 +13,27 @@ based on zope.schema and Dexterity.
 Features
 --------
 
-- Can be bullet points
+Interfaces / behaviors
+~~~~~~~~~~~~~~~~~~~~~~
+
+IHeightAndWidth
+        Provides the integer fields ``height`` and ``width``
+
+ICaptionAndLegend
+        Provides the text fields ``caption`` and ``legend``
+        (e.g. for image types)
+
+IExcludeFromSearch
+        Provides a boolean field ``excludeFromSearch``, aimed for
+        selective exclusion of objects from standard catalog searches
+
+IHierarchicalBuzzword
+        **This is quite incomplete;**
+        the provided ASCIILine field ``code`` is aimed for the implementation
+        of a hierarchical buzzword index.
+        The vocabulary is still to be implemented;
+        the factory of this behavior will likely be (re-) implemented
+        in another package.
 
 
 Examples
@@ -34,17 +54,20 @@ Sorry, we don't have real user documentation yet.
 Installation
 ------------
 
-Install visaplan.plone.behaviors by adding it to your buildout::
+This package won't normally be installed on its own.
+Add it to the requirements of your package in which you intend to
+use one or more of its behaviors (in ``setup.py``)::
 
-    [buildout]
+    setup(...
+        install_requires=[
+            'setuptools',
+            ...
+            'visaplan.plone.behaviors',
+            ],
+        ...)
 
-    ...
-
-    eggs =
-        visaplan.plone.behaviors
-
-
-and then running ``bin/buildout``
+and add the behaviors you need to the list in the FTI file of your
+Dexterity-based type.
 
 
 Contribute
