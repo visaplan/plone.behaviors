@@ -21,7 +21,6 @@ Examples
 
 This add-on can be seen in action at the following sites:
 
-- Is there a page on the internet where everybody can see the features?
 - https://www.unitracc.de
 - https://www.unitracc.com
 
@@ -29,7 +28,7 @@ This add-on can be seen in action at the following sites:
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder.
+Sorry, we don't have real user documentation yet.
 
 
 Installation
@@ -51,9 +50,8 @@ and then running ``bin/buildout``
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/visaplan/visaplan.plone.behaviors/issues
-- Source Code: https://github.com/visaplan/visaplan.plone.behaviors
-- Documentation: https://docs.plone.org/foo/bar
+- Issue Tracker: https://github.com/visaplan/plone.behaviors/issues
+- Source Code: https://github.com/visaplan/plone.behaviors
 
 
 Support
