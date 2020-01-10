@@ -33,6 +33,15 @@
         factory=".factories.ExcludeFromSearch"
         />
 
+    <!-- requires plone.namedfile: -->
+    <plone:behavior
+        title="Preview image"
+        description="A simple image field, for preview use"
+        provides=".interfaces.IPreviewImage"
+        marker=".interfaces.IPreviewImage"
+        factory=".factories.PreviewImage"
+        />
+
     <plone:behavior
         title="Hierarchical buzzwords"
         description="A cascade of hierarchical buzzwords, for categorization"

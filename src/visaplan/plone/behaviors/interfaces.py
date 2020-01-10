@@ -5,13 +5,14 @@ The schemas reflect fields which are currently implemented one-by-one
 for the Archetypes-based content types of the UNITRACC family of Plone sites.
 """
 from zope import schema
+from plone.namedfile import field as namedfile
 from zope.interface import alsoProvides
 from zope.i18nmessageid import MessageFactory
 
 from zope.interface import provider
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
-from zope import schema
 from plone.autoform.directives import order_after
 
 from visaplan.plone.behaviors import _
@@ -43,20 +44,6 @@ class IHeightAndWidth(model.Schema):
         description=_(u"The width needed for a reasonable view of the object"))
 
 
-'''
-@implementer(IHeightAndWidth)
-class HeightAndWidth(object):
-    """
-    Apply values for the (chosen) height and width
-    """
-    def __init__(self, context):
-        self.context = context
-
-    @property
-    def height(self):
-        return self.context
-'''
-       
 @provider(IFormFieldProvider)
 class ICaptionAndLegend(model.Schema):
     """\
@@ -97,9 +84,22 @@ class IExcludeFromSearch(model.Schema):
 
 
 @provider(IFormFieldProvider)
+class IPreviewImage(model.Schema):
+    """\
+    Provide an image for non-image content types,
+    for preview use
+    """
+    image = namedfile.NamedBlobImage(
+        title=_(u'Preview image'),
+        required=False,
+        description=_(u'This image will be used for listings etc.'
+                      ))
+
+
+@provider(IFormFieldProvider)
 class IHierarchicalBuzzword(model.Schema):
     """\
-    A hierarchical buzzword system
+    A hierarchical buzzword system (*incomplete*)
 
     NOTE: this interface might move to another package which implements the vocabulary!
     (and thus completes the behaviour)
@@ -110,3 +110,7 @@ class IHierarchicalBuzzword(model.Schema):
         default='FIXME',  # there is still some work to do
         description=_(u'Please select a value from the hierarchical vocabulary'
                       ))
+
+
+class IVisaplanPloneBehaviorsLayer(IDefaultBrowserLayer):
+    """Marker interface that defines a browser layer."""

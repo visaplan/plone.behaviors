@@ -10,6 +10,7 @@ from .interfaces import (
     IHeightAndWidth,
     ICaptionAndLegend,
     IExcludeFromSearch,
+    IPreviewImage,
     IHierarchicalBuzzword,
     )
 
@@ -86,6 +87,45 @@ class ExcludeFromSearch(object):
     @excludeFromSearch.setter
     def excludeFromSearch(self, value):
         self.context._excludeFromSearch = value
+
+
+@implementer(IPreviewImage)
+class PreviewImage(object):
+    """
+    factory class for IPreviewImage
+    """
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def image(self):
+        return self.context.image
+        return getattr(self.context, 'image', None)
+
+    @image.setter
+    def image(self, value):
+        self.context.image = value
+
+    def getThumbnailPath(self):
+        """
+        Return the TTW path to the (freely accessible) preview image
+        """
+        #TODO: Use the image attribute to
+        #      create a scaled preview image
+        #      and save it in the filesystem
+        #      (where an Apache server etc. can be configured to serve it
+        #      and all of its siblings in a generic way)
+        return self.getDefaultThumbnailPath()
+
+    def buildStaticImagePath(self, name):
+        # TTW path of the given default image name;
+        # override this to use another virtual base
+        return ('/++resource++unitracc-images/%(name)s'
+                % locals())
+
+    def getDefaultThumbnailPath(self):
+        return self.buildStaticImagePath('picto_media_animation_m.png')
 
 
 @implementer(IHierarchicalBuzzword)

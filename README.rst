@@ -81,12 +81,14 @@ Support
 -------
 
 If you are having issues, please let us know;
-please use the issue tracker mentioned above.
+please use the `issue tracker`_ mentioned above.
 
 
 License
 -------
 
 The project is licensed under the GPLv2.
+
+.. _`issue tracker`: https://github.com/visaplan/plone.behaviors/issues
 
 .. vim: tw=79 cc=+1 sw=4 sts=4 si et

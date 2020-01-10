@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Editor artifacts and backups
+.*.sw[poq]
+*~
+
 # C extensions
 *.so
 
@@ -113,9 +117,26 @@ pip-selfcheck.json
 # SCM
 .svn/
 
-# visaplan development
+# visaplan environment
 auto.msg
 scripts/
 update-module
 init
 init.vim
+CHANGES-in-*.rst
+
+# plonecli-generated
+log.html
+output.xml
+package.json
+pip-selfcheck.json
+report.html
+.vscode/
+# excludes
+!.coveragerc
+!.editorconfig
+!.gitattributes
+!.gitignore
+!.gitkeep
+!.travis.yml
+!src/visaplan
